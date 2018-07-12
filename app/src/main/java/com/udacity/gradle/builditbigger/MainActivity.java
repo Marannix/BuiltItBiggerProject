@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-import com.example.android.joke.Jokes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,11 +37,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void tellJoke(View view) {
-        Jokes jokes = new Jokes();
-        Toast.makeText(this,   jokes.getSadJoke(), Toast.LENGTH_SHORT).show();
+        EndpointsAsyncTask asyncTask = new EndpointsAsyncTask();
+        asyncTask.execute(this);
+        //Jokes jokes = new Jokes();
+        //Toast.makeText(this,   jokes.getSadJoke(), Toast.LENGTH_SHORT).show();
 
     }
+
+
 
 
 }
