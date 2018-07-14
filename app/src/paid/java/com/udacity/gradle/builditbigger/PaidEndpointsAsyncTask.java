@@ -11,7 +11,8 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 import java.io.IOException;
 
-public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+// TODO: Delete
+public class PaidEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
   public interface JsonGetTaskListener {
     void onComplete(String jsonString, Exception e);
@@ -21,7 +22,7 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
   private Context context;
   private JsonGetTaskListener listener;
 
-  public EndpointsAsyncTask setListener(JsonGetTaskListener listener) {
+  public PaidEndpointsAsyncTask setListener(JsonGetTaskListener listener) {
     this.listener = listener;
     return this;
   }

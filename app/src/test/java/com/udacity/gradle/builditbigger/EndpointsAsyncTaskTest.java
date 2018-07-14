@@ -1,8 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
 import android.app.Application;
-import android.app.Instrumentation;
-import android.content.Context;
 import android.test.ApplicationTestCase;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +10,7 @@ public class EndpointsAsyncTaskTest extends ApplicationTestCase<Application> {
   private String joke;
   private Exception error = null;
   private CountDownLatch countDownLatch = null;
-  private Context context;
+ // private Context context;
 
   public EndpointsAsyncTaskTest() {
     super(Application.class);
@@ -20,7 +18,7 @@ public class EndpointsAsyncTaskTest extends ApplicationTestCase<Application> {
 
   @Override protected void setUp() {
     countDownLatch = new CountDownLatch(1);
-    context = new Instrumentation().getContext();
+    //context = new Instrumentation().getContext();
   }
 
   @Override protected void tearDown() {
@@ -35,10 +33,11 @@ public class EndpointsAsyncTaskTest extends ApplicationTestCase<Application> {
         error = e;
         countDownLatch.countDown();
       }
-    }).execute(context);
+    }).execute();
 
     try {
       countDownLatch.await(10, TimeUnit.SECONDS);
+      assertNull(error);
       assertTrue(!joke.isEmpty());
     } catch (InterruptedException e) {
       e.printStackTrace();
