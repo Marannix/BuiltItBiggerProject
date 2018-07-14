@@ -12,8 +12,19 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 import java.io.IOException;
 
 public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+
+  public interface JsonGetTaskListener {
+    void onComplete(String jsonString, Exception e);
+  }
+
   private MyApi myApiService = null;
   private Context context;
+  private JsonGetTaskListener listener;
+
+  public EndpointsAsyncTask setListener(JsonGetTaskListener listener) {
+    this.listener = listener;
+    return this;
+  }
 
   @Override protected String doInBackground(Context... params) {
     if (myApiService == null) {
@@ -40,8 +51,12 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
   }
 
   @Override protected void onPostExecute(String result) {
+    //if (listener != null) {
+    listener.onComplete(result, null);
+    // }
     final Intent intent = new Intent(context, JokesActivity.class);
     intent.putExtra("jokes", result);
     context.startActivity(intent);
   }
+
 }
