@@ -42,8 +42,4 @@ public class PaidMainActivity extends AppCompatActivity {
         EndpointsAsyncTask asyncTask = new EndpointsAsyncTask();
         asyncTask.execute(this);
     }
-
-
-
-
 }

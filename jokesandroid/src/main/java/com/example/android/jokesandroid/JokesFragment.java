@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class JokesFragment extends Fragment {
+  private static final String JOKES = "jokes";
 
   public JokesFragment() {
     // Required empty public constructor
@@ -18,7 +19,7 @@ public class JokesFragment extends Fragment {
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_jokes_activity, container, false);
     Intent intent = getActivity().getIntent();
-    String randomJokes = intent.getStringExtra("jokes");
+    String randomJokes = intent.getStringExtra(JOKES);
     TextView jokes_TV = view.findViewById(R.id.jokes_text_view);
     jokes_TV.setText(randomJokes);
 

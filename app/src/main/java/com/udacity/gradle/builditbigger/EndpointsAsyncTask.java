@@ -13,6 +13,8 @@ import java.io.IOException;
 
 public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
+  private static final String JOKES = "jokes";
+
   public interface JsonGetTaskListener {
     void onComplete(String jsonString, Exception e);
   }
@@ -55,8 +57,7 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     listener.onComplete(result, null);
      }
     final Intent intent = new Intent(context, JokesActivity.class);
-    intent.putExtra("jokes", result);
+    intent.putExtra(JOKES, result);
     context.startActivity(intent);
   }
-
 }

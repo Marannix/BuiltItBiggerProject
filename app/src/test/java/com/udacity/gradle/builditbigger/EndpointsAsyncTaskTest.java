@@ -10,19 +10,19 @@ public class EndpointsAsyncTaskTest extends ApplicationTestCase<Application> {
   private String joke;
   private Exception error = null;
   private CountDownLatch countDownLatch = null;
- // private Context context;
 
   public EndpointsAsyncTaskTest() {
     super(Application.class);
   }
 
-  @Override protected void setUp() {
+  @Override protected void setUp() throws Exception {
     countDownLatch = new CountDownLatch(1);
-    //context = new Instrumentation().getContext();
+    super.setUp();
   }
 
-  @Override protected void tearDown() {
+  @Override protected void tearDown() throws Exception {
     countDownLatch.countDown();
+    super.tearDown();
   }
 
   public void testJoke() {
@@ -42,6 +42,5 @@ public class EndpointsAsyncTaskTest extends ApplicationTestCase<Application> {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-
   }
 }
